@@ -1,0 +1,9 @@
+[submodule "app-service"]
+	path = app-service
+	url = git@github.com:eshinn/app-service.git
+[submodule "users-service"]
+	path = users-service
+	url = git@github.com:eshinn/users-service.git
+[submodule "notes-service"]
+	path = notes-service
+	url = git@github.com:eshinn/notes-service.git

@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  app:
+    container_name: app-service
+    build: ./app-service
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - USERS_SERVICE_URL=http://users:3001
+      - NOTES_SERVICE_URL=http://notes:3002
+    volumes:
+      - ./app-service/:/app
+    command: node ./src/srv.js
+
+  users:
+    container_name: users-service
+    build: ./users-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+    volumes:
+      - ./users-service/:/app
+    command: node ./src/srv.js
+
+  notes:
+    container_name: notes-service
+    build: ./notes-service
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+    volumes:
+      - ./notes-service/:/app
+    command: node ./src/srv.js
